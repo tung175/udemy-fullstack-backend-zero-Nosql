@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Home</title>
+  </head>
+  <body>
+    <div class="topnav">
+      <a class="active" href="/">Home</a>
+      <a href="/create">Create Users</a>
+    </div>
+    <div class="table-container">
+      <div class="title"><strong>List Users</strong></div>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Email</th>
+          <th>Name</th>
+          <th>City</th>
+          <th>Actions</th>
+        </tr>
+
+        <!-- <% for(let i=0; i < listUsers.length; i++) { %>
+        <tr>
+          <td><%= listUsers[i].id %></td>
+          <td><%= listUsers[i].email %></td>
+          <td><%= listUsers[i].name %></td>
+          <td><%= listUsers[i].city %></td>
+          <td>
+            <button>Delete</button>
+            <button>Edit</button>
+          </td>
+        </tr>
+        <% } %> -->
+        <% listUsers.forEach(function(users) { %>
+        <tr>
+          <td><%= users.id %></td>
+          <td><%= users.email %></td>
+          <td><%= users.name %></td>
+          <td><%= users.city %></td>
+          <td>
+            <button><a href="/update/<%= users.id %>">Edit</a></button>
+            <form action="/delete-user/<%= users.id %>" method="POST">
+              <button>Delete</button>
+            </form>
+          </td>
+        </tr>
+        <% }); %>
+      </table>
+    </div>
+  </body>
+</html>
